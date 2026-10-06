@@ -1,0 +1,408 @@
+{
+  "jobtracker": {
+    "text": "Work\nResume\n\nPROJECT 01\n\nJobTracker\n\nI built a personal job search tool that keeps every stage of an application in one place. It stores applications, CVs and cover letters, generates the cover letter PDFs, and reads replies straight from Gmail to move each application forward on its own.\n\nRole\n\nProduct Design\nFull Stack Development\n\nStack\n\nNext.js\nTypeScript\nSupabase\nGmail API\nLLM\nOVERVIEW\n\nApplying for jobs in Vienna meant a spreadsheet, a folder full of PDFs and an inbox where every reply slowly disappeared under everything else. Keeping track of who had answered, which CV I had sent and what needed a follow-up took more effort than writing the applications themselves.\n\nSo I built one tool for all of it. Applications live in a table or on a board, documents sit next to them, and every change is recorded in a timeline. Cover letters are written in the app and rendered onto my own Figma layout, so the design stays exactly as drawn while only the text changes.\n\nGOAL\n\nThe tool should do the bookkeeping I kept forgetting. Not another place to maintain by hand, but something that picks up what happens in my inbox and keeps the board honest without me touching it.\n\nAt the same time it was a chance to build a small product end to end, from the data model and row level security in Postgres to the drag and drop board and the PDF rendering, and to treat a private tool with the same care for detail as a public one.\n\nGMAIL SYNC\n\nOnce a Gmail account is connected, the app looks for replies from companies I actually applied to. Matching runs in three stages with decreasing confidence, starting with a known email thread, then the sender domain, and finally the company name in the text combined with a job related keyword. Applicant tracking systems like Personio or Greenhouse are handled as well, since many companies never send from their own domain.\n\nA language model then decides whether a message is a rejection, an interview invitation, an offer or just a confirmation of receipt. When the match is strong and the model is confident, the status changes on its own and the email appears in the timeline. When it is not, the app offers a suggestion I can accept or dismiss with one click. A wrong status would be worse than none, so the automation only acts where it is sure.\n\nThe model never sees my inbox. The search is scoped to my own applications, message bodies are only loaded for emails that already matched, and what gets sent is a shortened snippet with links, addresses, phone numbers and quoted history removed. The classifier sits behind an interface, so switching to a local model instead of a cloud API is a single environment variable.\n\nSCREENS\nMORE WORK\nProject 2\nTrackBud\n\nFinance Tracker App\n\nApp Design\nDevelopment\nProject 3\nEmiDocs\n\nNotion Clone\n\nDevelopment",
+    "images": [
+      {
+        "src": "https://www.emilianmisera.com/logo.png",
+        "alt": "Logo"
+      },
+      {
+        "src": "https://www.emilianmisera.com/logo.png",
+        "alt": "Logo"
+      },
+      {
+        "src": "https://www.emilianmisera.com/logo.png",
+        "alt": "Logo"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2Fjobtracker%2Ficon.svg&w=256&q=75",
+        "alt": "JobTracker icon"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2Fjobtracker%2Fscreen-1.png&w=1200&q=95",
+        "alt": "JobTracker"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2Fjobtracker%2Fscreen-1.png&w=1200&q=75",
+        "alt": "JobTracker screen 1"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2Fjobtracker%2Fscreen-2.png&w=1200&q=75",
+        "alt": "JobTracker screen 2"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2Fjobtracker%2Fscreen-3.png&w=1200&q=75",
+        "alt": "JobTracker screen 3"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2Fjobtracker%2Fscreen-4.png&w=1200&q=75",
+        "alt": "JobTracker screen 4"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2Fjobtracker%2Fscreen-5.png&w=1200&q=75",
+        "alt": "JobTracker screen 5"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2Fjobtracker%2Fscreen-6.png&w=1200&q=75",
+        "alt": "JobTracker screen 6"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2Fjobtracker%2Fscreen-7.png&w=1200&q=75",
+        "alt": "JobTracker screen 7"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2FTrackBud.jpg&w=1200&q=100",
+        "alt": "TrackBud"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2FEmiDocs.jpg&w=1200&q=100",
+        "alt": "EmiDocs"
+      }
+    ],
+    "localImages": [
+      {
+        "url": "/__l5e/assets-v1/0d93adb6-7f33-4607-9078-4115e1f5149e/jobtracker-3.webp",
+        "alt": "JobTracker icon"
+      },
+      {
+        "url": "/__l5e/assets-v1/6b233b3a-7d80-4905-9699-f3976b85bc6e/jobtracker-4.webp",
+        "alt": "JobTracker"
+      },
+      {
+        "url": "/__l5e/assets-v1/70706ff9-a4e2-408c-b605-95d44b00bfca/jobtracker-5.webp",
+        "alt": "JobTracker screen 1"
+      },
+      {
+        "url": "/__l5e/assets-v1/f946d89c-0820-4c4b-8a00-634423222b4b/jobtracker-6.webp",
+        "alt": "JobTracker screen 2"
+      },
+      {
+        "url": "/__l5e/assets-v1/09f48c20-222e-48e1-bf5a-ff0ae71d1e13/jobtracker-7.webp",
+        "alt": "JobTracker screen 3"
+      },
+      {
+        "url": "/__l5e/assets-v1/fed4f84e-c293-4467-b6f9-1d958a24b725/jobtracker-8.webp",
+        "alt": "JobTracker screen 4"
+      },
+      {
+        "url": "/__l5e/assets-v1/8b715d7b-0ce3-4d8a-93e5-ef8323a31606/jobtracker-9.webp",
+        "alt": "JobTracker screen 5"
+      },
+      {
+        "url": "/__l5e/assets-v1/b2a3871f-7777-4e17-b167-66c42b456c13/jobtracker-10.webp",
+        "alt": "JobTracker screen 6"
+      },
+      {
+        "url": "/__l5e/assets-v1/af63940f-39ad-4379-a125-c45fc5d2461b/jobtracker-11.webp",
+        "alt": "JobTracker screen 7"
+      }
+    ]
+  },
+  "blumenbuehne": {
+    "text": "Work\nResume\n\nPROJECT 02\n\nBlumenb\u00fchne\n\nDie Blumenb\u00fchne is a charming flower shop in Regensburg, offering fresh bouquets, creative floral arrangements, and lovingly selected plants for every occasion. With a personal touch and an eye for detail, the shop brings natural beauty into everyday moments and special celebrations.\n\nRole\n\nFull Stack Development\n\nStack\n\nNext.js\nSanity\nOVERVIEW\n\nThe owners wanted to modernize their outdated website and give it a fresh, colorful, and playful look that better represents Die Blumenb\u00fchne. I kept the original sections but completely redesigned the visual style to feel more aesthetic, vibrant, and contemporary.\n\nA key new feature was an order service, allowing customers to place orders online instead of calling, using handwritten notes, or visiting the shop in person. This makes the process easier, clearer, and more organized for both customers and the shop owners.\n\nGOAL\n\nThe goal was to create a full redesign that matches the personality of the flower shop, while also building a new backend system with Sanity so the owners can flexibly manage their website content.\n\nAnother important goal was to implement an order system without online payment. The owners can now manage incoming orders through multiple backend views and automatically notify customers by email when their order is ready for pickup. Customers can also receive reminder emails, helping prevent forgotten orders.\n\nSCREENS\nMORE WORK\nProject 1\nJobTracker\n\nJob Search Dashboard\n\nWeb Design\nDevelopment\nProject 2\nTrackBud\n\nFinance Tracker App\n\nApp Design\nDevelopment",
+    "images": [
+      {
+        "src": "https://www.emilianmisera.com/logo.png",
+        "alt": "Logo"
+      },
+      {
+        "src": "https://www.emilianmisera.com/logo.png",
+        "alt": "Logo"
+      },
+      {
+        "src": "https://www.emilianmisera.com/logo.png",
+        "alt": "Logo"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2Fblumenbuehne%2Ficon.svg&w=256&q=75",
+        "alt": "Blumenb\u00fchne icon"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2Fblumenbuehne%2Fhero.png&w=1200&q=95",
+        "alt": "Blumenb\u00fchne"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2Fblumenbuehne%2Fscreen-1.png&w=1200&q=75",
+        "alt": "Blumenb\u00fchne screen 1"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2Fblumenbuehne%2Fscreen-2.png&w=1200&q=75",
+        "alt": "Blumenb\u00fchne screen 2"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2Fblumenbuehne%2Fscreen-3.png&w=1200&q=75",
+        "alt": "Blumenb\u00fchne screen 3"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2Fblumenbuehne%2Fscreen-4.png&w=1200&q=75",
+        "alt": "Blumenb\u00fchne screen 4"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2Fblumenbuehne%2Fscreen-5.png&w=1200&q=75",
+        "alt": "Blumenb\u00fchne screen 5"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2Fblumenbuehne%2Fscreen-6.png&w=1200&q=75",
+        "alt": "Blumenb\u00fchne screen 6"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2Fblumenbuehne%2Fscreen-7.png&w=1200&q=75",
+        "alt": "Blumenb\u00fchne screen 7"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2Fblumenbuehne%2Fscreen-8.png&w=1200&q=75",
+        "alt": "Blumenb\u00fchne screen 8"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2FJob.jpg&w=1200&q=100",
+        "alt": "JobTracker"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2FTrackBud.jpg&w=1200&q=100",
+        "alt": "TrackBud"
+      }
+    ],
+    "localImages": [
+      {
+        "url": "/__l5e/assets-v1/d3d182d0-68ca-4b28-9281-452820f028cb/blumenbuehne-3.webp",
+        "alt": "Blumenb\u00fchne icon"
+      },
+      {
+        "url": "/__l5e/assets-v1/d47bd0e2-ef1b-47f2-9595-02558e9af60b/blumenbuehne-4.webp",
+        "alt": "Blumenb\u00fchne"
+      },
+      {
+        "url": "/__l5e/assets-v1/52b121df-ac78-4609-b30a-13cb6e927514/blumenbuehne-5.webp",
+        "alt": "Blumenb\u00fchne screen 1"
+      },
+      {
+        "url": "/__l5e/assets-v1/32e0e425-dc9c-4ddd-840b-e163713871d9/blumenbuehne-6.webp",
+        "alt": "Blumenb\u00fchne screen 2"
+      },
+      {
+        "url": "/__l5e/assets-v1/acb894a7-ff38-4367-a64e-097b08a01163/blumenbuehne-7.webp",
+        "alt": "Blumenb\u00fchne screen 3"
+      },
+      {
+        "url": "/__l5e/assets-v1/da8f9f73-b4e1-434d-8b7d-23652ff439c6/blumenbuehne-8.webp",
+        "alt": "Blumenb\u00fchne screen 4"
+      },
+      {
+        "url": "/__l5e/assets-v1/9c40bb53-9d68-469e-b43a-65073d908e7e/blumenbuehne-9.webp",
+        "alt": "Blumenb\u00fchne screen 5"
+      },
+      {
+        "url": "/__l5e/assets-v1/6d386be3-8213-44cd-bab0-e11def417a85/blumenbuehne-10.webp",
+        "alt": "Blumenb\u00fchne screen 6"
+      },
+      {
+        "url": "/__l5e/assets-v1/cacc2ca1-a500-4553-956a-9ffe442c4a94/blumenbuehne-11.webp",
+        "alt": "Blumenb\u00fchne screen 7"
+      },
+      {
+        "url": "/__l5e/assets-v1/fc247fbf-e866-4e18-b74a-269ab009b3a4/blumenbuehne-12.webp",
+        "alt": "Blumenb\u00fchne screen 8"
+      }
+    ]
+  },
+  "trackbud": {
+    "text": "Work\nResume\n\nPROJECT 02\n\nTrackBud\n\nTrackBud helps you manage your personal finances by tracking income, expenses, account balance, and monthly budget goals with clear category-based insights and charts. It also supports shared finances by letting you add friends, create debt groups, and keep track of outstanding amounts for trips or shared expenses.\n\nRole\n\nUI/UX Design\nFrontend Development\n\nStack\n\nFlutter\nFirebase\nFirestore\nOVERVIEW\n\nTrackBud started as a way to bring everyday personal finance and shared group expenses into a single, clear interface. The focus was on a clean overview of balances, budgets, and open debts between friends \u2014 without the clutter of typical banking apps.\n\nGOAL\n\nThe goal was to design and build a full mobile finance tracker with a calm, focused UI, covering income, expenses, budget goals, and category insights.\n\nA second goal was the shared-finance system: friends, debt groups, and a clear breakdown of who owes what after a trip or shared purchase.\n\nSCREENS\nMORE WORK\nProject 1\nBlumenb\u00fchne\n\nWebsite for a Flower Shop\n\nDevelopment\nProject 2\nEmiDocs\n\nNotion Clone\n\nDevelopment",
+    "images": [
+      {
+        "src": "https://www.emilianmisera.com/logo.png",
+        "alt": "Logo"
+      },
+      {
+        "src": "https://www.emilianmisera.com/logo.png",
+        "alt": "Logo"
+      },
+      {
+        "src": "https://www.emilianmisera.com/logo.png",
+        "alt": "Logo"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2Ftrackbud%2Ficon.svg&w=256&q=75",
+        "alt": "TrackBud icon"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2Ftrackbud%2Fphone.png&w=1200&q=75",
+        "alt": "TrackBud app preview"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2Ftrackbud%2Fscreen-1.png&w=1200&q=75",
+        "alt": "TrackBud screen 1"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2Ftrackbud%2Fscreen-2.png&w=1200&q=75",
+        "alt": "TrackBud screen 2"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2Ftrackbud%2Fscreen-3.png&w=1200&q=75",
+        "alt": "TrackBud screen 3"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2Ftrackbud%2Fscreen-4.png&w=1200&q=75",
+        "alt": "TrackBud screen 4"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2Ftrackbud%2Fscreen-1.png&w=1200&q=75",
+        "alt": "TrackBud screen 1"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2Ftrackbud%2Fscreen-2.png&w=1200&q=75",
+        "alt": "TrackBud screen 2"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2Ftrackbud%2Fscreen-3.png&w=1200&q=75",
+        "alt": "TrackBud screen 3"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2Ftrackbud%2Fscreen-4.png&w=1200&q=75",
+        "alt": "TrackBud screen 4"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2FBlume.jpg&w=1200&q=100",
+        "alt": "Blumenb\u00fchne"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2FEmiDocs.jpg&w=1200&q=100",
+        "alt": "EmiDocs"
+      }
+    ],
+    "localImages": [
+      {
+        "url": "/__l5e/assets-v1/98e1ae98-b25c-4cdd-a948-a2daf75daf01/trackbud-3.webp",
+        "alt": "TrackBud icon"
+      },
+      {
+        "url": "/__l5e/assets-v1/79512072-f161-4c17-a6ae-bff0c6ad77c3/trackbud-4.webp",
+        "alt": "TrackBud app preview"
+      },
+      {
+        "url": "/__l5e/assets-v1/6988c850-336e-49b1-9662-20743991279d/trackbud-5.webp",
+        "alt": "TrackBud screen 1"
+      },
+      {
+        "url": "/__l5e/assets-v1/0ae383dd-3763-4302-aefa-59cb26beaaae/trackbud-6.webp",
+        "alt": "TrackBud screen 2"
+      },
+      {
+        "url": "/__l5e/assets-v1/418be72a-e501-44b1-829b-5ef6891e1586/trackbud-7.webp",
+        "alt": "TrackBud screen 3"
+      },
+      {
+        "url": "/__l5e/assets-v1/b446f942-c0c9-47bb-a178-a4b5e0c39ca7/trackbud-8.webp",
+        "alt": "TrackBud screen 4"
+      },
+      {
+        "url": "/__l5e/assets-v1/bdb5ff94-6eca-4f5c-a4d3-09eb00ba89f6/trackbud-9.webp",
+        "alt": "TrackBud screen 1"
+      },
+      {
+        "url": "/__l5e/assets-v1/f8db39b3-da59-4079-9b44-ba3fa06ba864/trackbud-10.webp",
+        "alt": "TrackBud screen 2"
+      },
+      {
+        "url": "/__l5e/assets-v1/d9809c12-94d8-4e22-83fe-84b24ebbbe6f/trackbud-11.webp",
+        "alt": "TrackBud screen 3"
+      },
+      {
+        "url": "/__l5e/assets-v1/0f880826-3bb5-4047-9d99-e699833f121e/trackbud-12.webp",
+        "alt": "TrackBud screen 4"
+      }
+    ]
+  },
+  "emidocs": {
+    "text": "Work\nResume\n\nPROJECT 03\n\nEmiDocs\n\nEmiDocs is a simplified, self-built Notion clone \u2014 a connected workspace for ideas, documents, and plans with a clean, minimal interface, where users can create pages, edit content, and organize information clearly.\n\nRole\n\nFull Stack Development\n\nStack\n\nNext.js\nClerk\nConvex\nOVERVIEW\n\nFor this project, I tried to build a simplified Notion clone with a clean and minimal interface. The focus was not on recreating every Notion feature, but on understanding the core functionality behind a modern workspace and note-taking app.\n\nGOAL\n\nThe goal was to recreate the basic experience of Notion in a simplified version. I wanted to build a functional workspace where users can manage pages, edit content, and organize information clearly.\n\nAnother important goal was to improve my skills in building interactive web applications, working with dynamic content, and rebuilding a clean user experience that feels intuitive and easy to use.\n\nSCREENS\nMORE WORK\nProject 1\nTrackBud\n\nFinance Tracker App\n\nApp Design\nDevelopment\nProject 2\nBlumenb\u00fchne\n\nWebsite for a Flower Shop\n\nDevelopment",
+    "images": [
+      {
+        "src": "https://www.emilianmisera.com/logo.png",
+        "alt": "Logo"
+      },
+      {
+        "src": "https://www.emilianmisera.com/logo.png",
+        "alt": "Logo"
+      },
+      {
+        "src": "https://www.emilianmisera.com/logo.png",
+        "alt": "Logo"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2Femidocs%2Ficon.png&w=256&q=75",
+        "alt": "EmiDocs icon"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2Femidocs%2Fhero.png&w=1200&q=75",
+        "alt": "EmiDocs"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2Femidocs%2Fscreen-1.png&w=1200&q=75",
+        "alt": "EmiDocs screen 1"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2Femidocs%2Fscreen-2.png&w=1200&q=75",
+        "alt": "EmiDocs screen 2"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2Femidocs%2Fscreen-3.png&w=1200&q=75",
+        "alt": "EmiDocs screen 3"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2Femidocs%2Fscreen-4.png&w=1200&q=75",
+        "alt": "EmiDocs screen 4"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2FTrackBud.jpg&w=1200&q=100",
+        "alt": "TrackBud"
+      },
+      {
+        "src": "https://www.emilianmisera.com/_next/image?url=%2Fassets%2Fprojects%2FBlume.jpg&w=1200&q=100",
+        "alt": "Blumenb\u00fchne"
+      }
+    ],
+    "localImages": [
+      {
+        "url": "/__l5e/assets-v1/2e7043ba-a576-4419-bea5-8dd0e1f4a854/emidocs-3.webp",
+        "alt": "EmiDocs icon"
+      },
+      {
+        "url": "/__l5e/assets-v1/e657e4e6-fa27-4f0b-881c-23f42ddb4554/emidocs-4.webp",
+        "alt": "EmiDocs"
+      },
+      {
+        "url": "/__l5e/assets-v1/71a888ed-1656-4603-9c9e-155450204b4b/emidocs-5.webp",
+        "alt": "EmiDocs screen 1"
+      },
+      {
+        "url": "/__l5e/assets-v1/7f0f5f05-f833-4b03-9134-1da2dbf0d18f/emidocs-6.webp",
+        "alt": "EmiDocs screen 2"
+      },
+      {
+        "url": "/__l5e/assets-v1/ba739090-247f-4cc8-a369-946587fa29dd/emidocs-7.webp",
+        "alt": "EmiDocs screen 3"
+      },
+      {
+        "url": "/__l5e/assets-v1/3c08c935-5fb7-4916-8b6a-cd7f2a828d37/emidocs-8.webp",
+        "alt": "EmiDocs screen 4"
+      }
+    ]
+  },
+  "resume": {
+    "text": "Work\nResume\nEmilian Misera\ngithub.com/emilianmisera\n\nCurrently studying Media Computing at the University of Regensburg, I'm a creative web developer with a passion for designing, animating, and continually expanding my technical skills to create meaningful, interactive experiences.\n\nSearching for Job \u00b7 Vienna or fully remote\nSKILLS\n\nLanguages & Libraries\n\nJavaScript / Typescript\nPython\nJava\nReact\nVue.js\nNode.js\nFlutter\n\nDatabases & Backend\n\nPostgreSQL\nFirebase\nSupabase\nConvex\nClerk\n\nTools & Platforms\n\nFigma\nPhotoshop\nIllustrator\nAfterEffects\nBlender\nEDUCATION\n\nUniversity of Regensburg\n\nB.A. Media Computing\n\n2023 - 2026\n\nRelevant Courses\n\nObject Oriented Programming\nApp Development\nAlgorithms and Data Structures\nDatabase Systems\nEfficient Data Processing\nExplainable AI\nUsability Engineering\n\nAdditional Experience\n\nMIT Global Startup Lab, 2025\nWORK\nifb - Institut zur Fortbildung von Betriebsr\u00e4ten\n\nJAN 2025 - JUNE 2026\n\nWorking Student\n\nDuring my time as a working student in application development, I played an active role in a comprehensive website relaunch. My responsibilities included estimating the scope of new features, implementing them using Vue.js and Twig, and ensuring system stability through consistent bug fixing. I gained significant hands-on experience with the Pimcore CMS and PHP. Working in a hybrid office model, I balanced independent remote work with team-oriented development.\n\nSEITWERK\n\nMAY 2023 - JUNE 2023\n\nInternship\n\nI strengthened my skills in Figma and prototyping, contributed to a client app project, and gained my first in-depth understanding of agency processes - from brainstorming to the fully developed product.",
+    "images": [
+      {
+        "src": "https://www.emilianmisera.com/logo.png",
+        "alt": "Logo"
+      },
+      {
+        "src": "https://www.emilianmisera.com/logo.png",
+        "alt": "Logo"
+      },
+      {
+        "src": "https://www.emilianmisera.com/logo.png",
+        "alt": "Logo"
+      }
+    ],
+    "localImages": []
+  }
+}
