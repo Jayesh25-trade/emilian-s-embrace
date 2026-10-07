@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
-import { Code2, MousePointer2, PenLine, PanelsTopLeft } from 'lucide-react';
+import { Code2, PenLine, PanelsTopLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { CursorLabel, FloatingControls, Footer, Header } from './chrome';
 import { ProjectCard } from './project-card';
