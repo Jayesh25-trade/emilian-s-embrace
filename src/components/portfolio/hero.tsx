@@ -21,8 +21,6 @@ export function PortfolioHero() {
         .set('.hero-copy, .look-button', { opacity: 0 })
         .from('.opening-clip-top, .opening-clip-bottom', { height: '50%', duration: 1.35, ease: 'power4.inOut' }, 0.35)
         .to('.opening-marquee-container', { x: -140, duration: 3.1, ease: 'none' }, 0)
-        .from('.opening-clip-top .opening-marquee, .opening-clip-bottom .opening-marquee', { xPercent: 5, duration: 2.9, ease: 'power3.inOut' }, 0.35)
-        .from('.opening-clip-center .opening-marquee', { xPercent: -5, duration: 2.7, ease: 'power3.inOut' }, 0.35)
         .to('.opening-clip-top', { clipPath: 'inset(0 0 100% 0)', duration: 1.25, ease: 'power4.inOut' }, 3.1)
         .to('.opening-clip-bottom', { clipPath: 'inset(100% 0 0 0)', duration: 1.25, ease: 'power4.inOut' }, 3.1)
         .to('.opening-marquee, .opening-caption, .opening-skip', { opacity: 0, duration: 0.65, ease: 'power2.inOut' }, 3.15)
