@@ -4,3 +4,4 @@
 - [x] Verify appearance, motion, links, and routing.
 - [x] Replace reference identity, profile, projects, contact, and resume with Jayesh Mal's content.
 - [x] Preserve the existing visual design and verify the updated portfolio end to end.
+- [ ] Adapt the uploaded marquee opening to Jayesh Mal and verify its reveal, skip control, and reduced-motion behavior.
