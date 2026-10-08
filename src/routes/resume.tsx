@@ -1,3 +1,2 @@
-import { createFileRoute } from '@tanstack/react-router';
-import { Resume } from '@/components/portfolio/resume';
-export const Route=createFileRoute('/resume')({head:()=>({meta:[{title:'Resume | Jayesh Mal'},{name:'description',content:'Skills, studio experience, and contact details for full-stack developer Jayesh Mal.'},{property:'og:title',content:'Resume | Jayesh Mal'},{property:'og:description',content:'Skills, studio experience, and contact details for full-stack developer Jayesh Mal.'},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary_large_image'}]}),component:Resume});
+import { createFileRoute, redirect } from '@tanstack/react-router';
+export const Route=createFileRoute('/resume')({beforeLoad:()=>{throw redirect({to:'/company',replace:true})}});
