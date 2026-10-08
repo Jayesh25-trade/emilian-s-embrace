@@ -1,0 +1,3 @@
+import { createFileRoute } from '@tanstack/react-router';
+import { CompanyProfile } from '@/components/portfolio/resume';
+export const Route=createFileRoute('/company')({head:()=>({meta:[{title:'Company | Jimmy Developers'},{name:'description',content:'Meet Jimmy Developers: our services, technology, studio experience, and contact details.'},{property:'og:title',content:'Company | Jimmy Developers'},{property:'og:description',content:'Meet Jimmy Developers: our services, technology, studio experience, and contact details.'},{property:'og:type',content:'website'},{name:'twitter:card',content:'summary_large_image'}]}),component:CompanyProfile});
