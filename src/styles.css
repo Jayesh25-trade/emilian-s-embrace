@@ -167,3 +167,20 @@ body{font-family:'Open Sans',sans-serif;margin:0;letter-spacing:0}html{scroll-pa
 .jayesh-mark{width:45px;height:45px;border:1px solid currentColor;display:grid;place-items:center;font-family:'Source Code Pro',monospace;font-size:14px;font-weight:600}.studio-monogram{width:92%;aspect-ratio:1;border:3px solid var(--primary);display:grid;place-items:center;color:var(--primary);font-size:48px;font-family:'Source Code Pro',monospace;font-weight:600}.detail-copy .contact-button a{display:flex;align-items:center;gap:8px}.screens-grid:has(> :only-child){grid-template-columns:minmax(0,720px)}
 @media(max-width:900px){.jayesh-mark{width:38px;height:38px}}
 @media(max-width:600px){.jayesh-mark{width:32px;height:32px;font-size:11px}.studio-monogram{font-size:26px}}
+
+/* Uploaded three-band opening, scoped to the portfolio's first section. */
+.hero-opening{position:absolute;inset:0;z-index:70;overflow:hidden;background:var(--surface-light);color:var(--ink)}
+.opening-bands{position:absolute;inset:0}
+.opening-clip{position:absolute;width:100%;height:33.333%;overflow:hidden}
+.opening-clip-top,.opening-clip-bottom{z-index:2;background:var(--background);color:var(--foreground);clip-path:inset(0 0 0 0)}
+.opening-clip-top{top:0}.opening-clip-bottom{bottom:0}
+.opening-clip-center{top:33.333%;color:var(--ink)}
+.opening-marquee{position:absolute;top:200%;left:50%;transform:translate(-50%,-50%);width:max-content;will-change:transform}
+.opening-marquee-container{display:flex;align-items:center;gap:56px;font-family:var(--font-sans);font-size:112px;font-weight:700;line-height:1.05;letter-spacing:0;white-space:nowrap}
+.opening-period{color:var(--primary)}
+.opening-caption{position:absolute;left:40px;right:40px;bottom:30px;display:flex;justify-content:space-between;gap:20px;z-index:3;color:var(--muted-foreground);font-size:11px;letter-spacing:0}
+.opening-skip{position:absolute;right:32px;top:26px;z-index:4;color:var(--foreground);font-size:12px;gap:10px;border-radius:4px;background:transparent}
+.opening-skip:hover{background:var(--accent);color:var(--primary)}
+@media(max-width:900px){.opening-marquee-container{font-size:88px;gap:40px}.opening-caption{left:28px;right:28px}.opening-skip{right:20px}}
+@media(max-width:600px){.opening-marquee-container{font-size:60px;gap:28px}.opening-caption{left:24px;right:24px;bottom:25px;flex-direction:column;gap:5px;font-size:10px}.opening-skip{right:14px;top:18px}}
+@media(prefers-reduced-motion:reduce){.hero-opening{display:none}}
