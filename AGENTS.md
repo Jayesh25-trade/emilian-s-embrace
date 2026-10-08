@@ -13,3 +13,4 @@
 - Keep shared portfolio chrome, cards, and page views in `src/components/portfolio`; leaf TanStack routes own metadata and URL matching so navigation remains native.
 - Store preserved reference media as asset pointers and static portfolio content in client-safe modules; this informational portfolio needs no backend.
 - Scope scroll animations with GSAP context and clean up Lenis on unmount; reduced-motion users receive static visible content.
+- Keep the uploaded opening animation scoped to the homepage hero in its own view component, with a cancellable GSAP timeline and reduced-motion bypass, so it cannot block other portfolio pages.
