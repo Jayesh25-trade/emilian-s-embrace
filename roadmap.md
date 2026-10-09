@@ -7,5 +7,5 @@
 - [x] Adapt the uploaded marquee opening to Jayesh Mal and verify its reveal, skip control, and reduced-motion behavior.
 - [x] Rebrand all public identity and copy as Jimmy Developers, with a company profile.
 - [x] Remove blank opening frames and verify company navigation and contact links.
-- [ ] Make the full opening and hero reveal fast and smooth, locking scroll, touch, clicks, and keyboard interaction until completion.
-- [ ] Verify automatic unlocking, company navigation, and reduced-motion behavior.
+- [x] Make the full opening and hero reveal fast and smooth, locking scroll, touch, clicks, and keyboard interaction until completion.
+- [x] Verify automatic unlocking, company navigation, and reduced-motion behavior.
