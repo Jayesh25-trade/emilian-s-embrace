@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState, type MouseEvent as ReactMouseEvent } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
@@ -14,6 +14,14 @@ export function PortfolioHome(){
  const lenisRef=useRef<Lenis|null>(null);
  const [opening,setOpening]=useState(true);
  const finishOpening=useCallback(()=>setOpening(false),[]);
+ const scrollToWork=useCallback((event:ReactMouseEvent<HTMLButtonElement>)=>{
+  const btn=event.currentTarget;btn.classList.remove('clicked');void btn.offsetWidth;btn.classList.add('clicked');
+  const target=document.getElementById('selected-work-section');if(!target)return;
+  window.setTimeout(()=>{
+   if(lenisRef.current){lenisRef.current.start();lenisRef.current.scrollTo(target,{offset:-40,duration:1.6,easing:(t:number)=>1-Math.pow(1-t,4)});}
+   else target.scrollIntoView({behavior:'instant' as ScrollBehavior});
+  },180);
+ },[]);
  useEffect(()=>{
   if(!opening){lenisRef.current?.start();return;}
   const block=(event:Event)=>{event.preventDefault();event.stopImmediatePropagation();};
@@ -44,7 +52,7 @@ export function PortfolioHome(){
  },[]);
  return <div ref={root} className="portfolio-home" inert={opening} aria-busy={opening}><Header/><FloatingControls/>
    <main><PortfolioHero opening={opening} onComplete={finishOpening}/>
-  <section className="graphic-story story-stage" id="graphic-design"><div className="story-sticky"><div className="logo-studies">{Array.from({length:8},(_,i)=><div className={`logo-study study-${i}`} key={i}>{i===4?<span className="studio-monogram">JD</span>:<svg viewBox="0 0 120 120" aria-hidden="true"><path d={['M60 10L108 38V82L60 110L12 82V38ZM12 38L60 68L108 38M60 68V110','M22 25L100 15M55 20L40 105M35 64L90 52','M25 88C10 35 98 8 98 50C98 80 34 61 31 88C32 114 96 94 99 80','M95 30C20 -5 4 65 30 90C60 121 100 80 91 53C76 18 30 40 42 69C53 89 81 63 68 53'][i%4]}/><path className="scribble" d="M13 30L75 7L26 65L90 25L26 85L102 44L50 96L111 65L64 112"/></svg>}</div>)}</div><div className="graphic-note reveal"><small>Jimmy Developers <span>Est. 2021</span></small><p>We turn complex ideas into<br/>seamless, high-impact<br/>digital experiences.</p></div><button type="button" className="click-cursor graphic-cursor" onClick={()=>document.getElementById('selected-work-section')?.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'})} aria-label="Click on me — see selected work"><svg viewBox="0 0 20 25" aria-hidden="true"><path d="M1 1L18 12L9 14L5 23Z"/></svg><span className="click-cursor-label">Click on me</span><i className="click-cursor-ring" aria-hidden="true"/></button></div></section>
+  <section className="graphic-story story-stage" id="graphic-design"><div className="story-sticky"><div className="logo-studies">{Array.from({length:8},(_,i)=><div className={`logo-study study-${i}`} key={i}>{i===4?<span className="studio-monogram">JD</span>:<svg viewBox="0 0 120 120" aria-hidden="true"><path d={['M60 10L108 38V82L60 110L12 82V38ZM12 38L60 68L108 38M60 68V110','M22 25L100 15M55 20L40 105M35 64L90 52','M25 88C10 35 98 8 98 50C98 80 34 61 31 88C32 114 96 94 99 80','M95 30C20 -5 4 65 30 90C60 121 100 80 91 53C76 18 30 40 42 69C53 89 81 63 68 53'][i%4]}/><path className="scribble" d="M13 30L75 7L26 65L90 25L26 85L102 44L50 96L111 65L64 112"/></svg>}</div>)}</div><div className="graphic-note reveal"><small>Jimmy Developers <span>Est. 2021</span></small><p>We turn complex ideas into<br/>seamless, high-impact<br/>digital experiences.</p><button type="button" className="click-cursor graphic-cursor" onClick={scrollToWork} aria-label="Click on me — see selected work"><i className="click-cursor-ring" aria-hidden="true"/><i className="click-cursor-ring delay" aria-hidden="true"/><svg viewBox="0 0 20 25" aria-hidden="true"><path d="M1 1L18 12L9 14L5 23Z"/></svg><span className="click-cursor-label">Click on me <b aria-hidden="true">→</b></span></button></div></div></section>
   <section className="ux-story story-stage"><div className="story-sticky"><div className="wire-columns">{Array.from({length:8},(_,i)=><i className="wire-column" key={i}/>)}</div><div className="wire-box"/><div className="wire-input"/><div className="wire-toggle"/><div className="wire-options">◉ ○<br/>☑ □</div><h2 className="reveal selection-outline">Performance, motion<br/>and thoughtful UX.</h2><CursorLabel className="ux-cursor"/></div></section>
   <section className="building-story story-stage"><div className="story-sticky"><h2 className="reveal">We engineer<br/>what you imagine</h2><div className="design-dock reveal"><PenLine/><PanelsTopLeft/><span><Code2/></span></div></div></section>
   <section className="code-story story-stage"><div className="story-sticky code-grid"><div className="snippets">{snippets.map((s,i)=><pre className={`code-snippet snippet-${i}`} key={s}>{s}</pre>)}</div><h2 className="reveal">and build it to scale.</h2></div></section>
