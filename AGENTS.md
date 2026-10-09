@@ -13,6 +13,6 @@
 - Keep shared portfolio chrome, cards, and page views in `src/components/portfolio`; leaf TanStack routes own metadata and URL matching so navigation remains native.
 - Store preserved reference media as asset pointers and static portfolio content in client-safe modules; this informational portfolio needs no backend.
 - Scope scroll animations with GSAP context and clean up Lenis on unmount; reduced-motion users receive static visible content.
-- Keep the uploaded opening animation scoped to the homepage hero in its own view component, with a cancellable GSAP timeline and reduced-motion bypass, so it cannot block other portfolio pages.
+- Keep the opening timeline scoped to the hero and let the homepage own its interaction lock: inert content, blocked input, CSS scroll lock, and stopped Lenis are released on full timeline completion or unmount; reduced motion bypasses the opening so other pages cannot stay locked.
 
 - Serve the studio profile at `/company` and redirect the legacy `/resume` URL there so existing links remain valid without presenting a personal resume.

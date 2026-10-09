@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
@@ -11,10 +11,23 @@ import { PortfolioHero } from './hero';
 const snippets=["useEffect(() => {\n const el = document.querySelector('.container')\n}, [])","import { useState } from 'react'",'"use client";',"const [open, setOpen] = useState(false)",'<button>Explore</button>','onClick={handleOpen}','transition: all 0.3s ease;','interface Props {\n children: ReactNode\n}', 'export default function App()',"type Theme = 'dark' | 'light'","const theme = 'dark'",'<h1>Headline</h1>','ref={containerRef}','ScrollTrigger.create({...})'];
 export function PortfolioHome(){
  const root=useRef<HTMLDivElement>(null);
+ const lenisRef=useRef<Lenis|null>(null);
+ const [opening,setOpening]=useState(true);
+ const finishOpening=useCallback(()=>setOpening(false),[]);
+ useEffect(()=>{
+  if(!opening){lenisRef.current?.start();return;}
+  const block=(event:Event)=>{event.preventDefault();event.stopImmediatePropagation();};
+  const events=['wheel','touchmove','touchstart','pointerdown','click','keydown'];
+  events.forEach(type=>document.addEventListener(type,block,{capture:true,passive:false}));
+  lenisRef.current?.stop();
+  return()=>{events.forEach(type=>document.removeEventListener(type,block,true));};
+ },[opening]);
  useEffect(()=>{
   gsap.registerPlugin(ScrollTrigger);
   const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const lenis=reduced?null:new Lenis({autoRaf:true,anchors:true,duration:1.15});lenis?.on('scroll',ScrollTrigger.update);
+  lenisRef.current=lenis;
+  if(root.current?.inert)lenis?.stop();
   const ctx=gsap.context(()=>{
    if(reduced)return;
    gsap.to('.hero-copy',{y:-100,opacity:0,scrollTrigger:{trigger:'.hero-section',start:'35% top',end:'bottom top',scrub:true}});
@@ -27,10 +40,10 @@ export function PortfolioHome(){
    gsap.from('.contact-letter',{opacity:.15,y:30,stagger:.035,scrollTrigger:{trigger:'.contact-section',start:'top 50%',end:'top top',scrub:1}});
    ScrollTrigger.create({trigger:'.light-sections',start:'top 60px',onEnter:()=>document.querySelector('.portfolio-header')?.classList.add('light'),onLeaveBack:()=>document.querySelector('.portfolio-header')?.classList.remove('light')});
   },root);
-  return()=>{ctx.revert();lenis?.destroy()};
+  return()=>{ctx.revert();lenis?.destroy();lenisRef.current=null;};
  },[]);
- return <div ref={root} className="portfolio-home"><Header/><FloatingControls/>
-   <main><PortfolioHero/>
+ return <div ref={root} className="portfolio-home" inert={opening} aria-busy={opening}><Header/><FloatingControls/>
+   <main><PortfolioHero opening={opening} onComplete={finishOpening}/>
   <section className="graphic-story story-stage" id="graphic-design"><div className="story-sticky"><div className="logo-studies">{Array.from({length:8},(_,i)=><div className={`logo-study study-${i}`} key={i}>{i===4?<span className="studio-monogram">JD</span>:<svg viewBox="0 0 120 120" aria-hidden="true"><path d={['M60 10L108 38V82L60 110L12 82V38ZM12 38L60 68L108 38M60 68V110','M22 25L100 15M55 20L40 105M35 64L90 52','M25 88C10 35 98 8 98 50C98 80 34 61 31 88C32 114 96 94 99 80','M95 30C20 -5 4 65 30 90C60 121 100 80 91 53C76 18 30 40 42 69C53 89 81 63 68 53'][i%4]}/><path className="scribble" d="M13 30L75 7L26 65L90 25L26 85L102 44L50 96L111 65L64 112"/></svg>}</div>)}</div><div className="graphic-note reveal"><small>Jimmy Developers <span>Est. 2021</span></small><p>We turn complex ideas into<br/>seamless, high-impact<br/>digital experiences.</p></div><CursorLabel className="graphic-cursor"/></div></section>
   <section className="ux-story story-stage"><div className="story-sticky"><div className="wire-columns">{Array.from({length:8},(_,i)=><i className="wire-column" key={i}/>)}</div><div className="wire-box"/><div className="wire-input"/><div className="wire-toggle"/><div className="wire-options">◉ ○<br/>☑ □</div><h2 className="reveal selection-outline">Performance, motion<br/>and thoughtful UX.</h2><CursorLabel className="ux-cursor"/></div></section>
   <section className="building-story story-stage"><div className="story-sticky"><h2 className="reveal">We engineer<br/>what you imagine</h2><div className="design-dock reveal"><PenLine/><PanelsTopLeft/><span><Code2/></span></div></div></section>
