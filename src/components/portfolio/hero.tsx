@@ -15,17 +15,18 @@ export function PortfolioHero({ opening, onComplete }: { opening: boolean; onCom
       const intro = gsap.timeline({ onComplete });
       intro
         .set('.hero-copy, .look-button', { opacity: 0 })
-        .from('.opening-clip-top, .opening-clip-bottom', { height: '50%', duration: 0.45, ease: 'power3.inOut' }, 0)
-        .to('.opening-clip-top .opening-marquee-container, .opening-clip-bottom .opening-marquee-container', { x: -160, duration: 1.05, ease: 'power1.out' }, 0)
-        .to('.opening-clip-center .opening-marquee-container', { x: 160, duration: 1.05, ease: 'power1.out' }, 0)
-        .to('.opening-clip-top', { yPercent: -100, duration: 0.55, ease: 'power3.inOut' }, 0.6)
-        .to('.opening-clip-bottom', { yPercent: 100, duration: 0.55, ease: 'power3.inOut' }, 0.6)
-        .to('.opening-marquee, .opening-caption', { opacity: 0, duration: 0.3, ease: 'power2.inOut' }, 0.8)
-        .to('.hero-opening', { opacity: 0, duration: 0.35, ease: 'power2.inOut' }, 1.05)
-        .set('.hero-copy', { opacity: 1 }, 1.05)
-        .from('.hero-letter', { opacity: 0, y: 24, stagger: 0.015, duration: 0.35, ease: 'power3.out' }, 1.05)
-        .from('.hero-creative', { opacity: 0, y: 18, duration: 0.45, ease: 'power3.out' }, 1.1)
-        .to('.look-button', { opacity: 1, duration: 0.25 }, 1.3);
+        .from('.opening-clip-top, .opening-clip-bottom', { height: '50%', duration: 0.9, ease: 'expo.inOut' }, 0)
+        .fromTo('.opening-clip-top .opening-marquee-container, .opening-clip-bottom .opening-marquee-container', { x: -320 }, { x: 0, duration: 2.4, ease: 'sine.inOut' }, 0)
+        .fromTo('.opening-clip-center .opening-marquee-container', { x: 320 }, { x: 0, duration: 2.4, ease: 'sine.inOut' }, 0)
+        .from('.opening-caption', { opacity: 0, y: 24, duration: 0.7, ease: 'power3.out' }, 0.35)
+        .to('.opening-clip-top', { yPercent: -100, duration: 0.9, ease: 'expo.inOut' }, 1.15)
+        .to('.opening-clip-bottom', { yPercent: 100, duration: 0.9, ease: 'expo.inOut' }, 1.15)
+        .to('.opening-marquee, .opening-caption', { opacity: 0, duration: 0.45, ease: 'power2.inOut' }, 1.45)
+        .to('.hero-opening', { opacity: 0, duration: 0.45, ease: 'power2.inOut' }, 1.8)
+        .set('.hero-copy', { opacity: 1 }, 1.85)
+        .from('.hero-letter', { opacity: 0, y: 30, stagger: 0.025, duration: 0.55, ease: 'power3.out' }, 1.85)
+        .from('.hero-creative', { opacity: 0, y: 22, duration: 0.6, ease: 'power3.out' }, 2.05)
+        .to('.look-button', { opacity: 1, duration: 0.4, ease: 'power2.out' }, 2.45);
     }, root);
     return () => { ctx.revert(); };
   }, [onComplete]);
