@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState, type MouseEvent as ReactMouseEvent } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
@@ -14,7 +14,7 @@ export function PortfolioHome(){
  const lenisRef=useRef<Lenis|null>(null);
  const [opening,setOpening]=useState(true);
  const finishOpening=useCallback(()=>setOpening(false),[]);
- const scrollToWork=useCallback((event:React.MouseEvent<HTMLButtonElement>)=>{
+ const scrollToWork=useCallback((event:ReactMouseEvent<HTMLButtonElement>)=>{
   const btn=event.currentTarget;btn.classList.remove('clicked');void btn.offsetWidth;btn.classList.add('clicked');
   const target=document.getElementById('selected-work-section');if(!target)return;
   window.setTimeout(()=>{
